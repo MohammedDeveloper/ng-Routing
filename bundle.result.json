@@ -1,0 +1,10 @@
+{
+  "main": {
+    "scripts": "<script src='/public/main-8423626e78.js' type='text/javascript'></script>",
+    "styles": "<link href='/public/main-e16ce9e884.css' media='all' rel='stylesheet' type='text/css'/>"
+  },
+  "external": {
+    "scripts": "<script src='/public/external-43e740ca6b.js' type='text/javascript'></script>",
+    "styles": "<link href='/public/external-f35e4fa1b9.css' media='all' rel='stylesheet' type='text/css'/>"
+  }
+}
