@@ -1,5 +1,5 @@
 /**
- * Creating the module for FB-Comments app
+ * Creating the module for this app
  */
-var myFBCommentModule = angular.module("myapp", ["ngRoute"]);
+var myModule = angular.module("myapp", ["ngRoute"]);
 

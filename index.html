@@ -45,17 +45,18 @@
     <script src="angular/app.module.js"></script>
     <script src="angular/app.router.js"></script>
     <script src="angular/app.bootstrap.js"></script> 
+    <script src="angular/controllers/logincontroller.js"></script> 
+    <script src="angular/controllers/dashboardcontroller.js"></script> 
+    <script src="angular/controllers/profilecontroller.js"></script> 
 
     <!-- Boostrapping Technique - 2: Manual Boostrapping - Mentioned above: angular/app.bootstrap.js-->
     <base href="/">
 </head>
 
-<body><script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));
-//]]></script>
+<body>
 
     <!-- NAV SECTION -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="loginCtrl">
 
         <div class="container">
             <div class="navbar-header">
@@ -68,10 +69,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="1" class="text-uppercase">1</a></li>
-                    <li><a href="2" class="text-uppercase">2</a></li>
-                    <li><a href="11" class="text-uppercase">3</a></li>
-                    <li><a href="22" class="text-uppercase">4</a></li>
+                    <li><a href="/dashboard" class="text-uppercase">Dashboard</a></li>
+                    <li><a href="/contactus" class="text-uppercase">Contact Us</a></li>
+                    <!-- <li><a href="/profile" class="text-uppercase">Profile</a></li> -->
+                    <li><a ng-click="logOut()" ng-if="User.IsLoggedIn" class="text-uppercase">Log Out</a></li>
                 </ul>
             </div>
 

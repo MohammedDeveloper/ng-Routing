@@ -1,30 +1,90 @@
 /**
- * Creating the module's router for FB-Comments app
+ * Creating the module's router for this app
  */
 // <script src="angular/app.module.js"></script>
 // <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 
 /// set the router configuration...
-myFBCommentModule.config(function ($routeProvider, $locationProvider) {
+myModule.config(function ($routeProvider, $locationProvider) {
 
     $routeProvider
-        .when("/11", {
-            template: "<h1>TEST 11</h1><p>Bananas contain around 75% water.</p>"
+        .when("/dashboard", {
+            resolve: {
+                check: function ($rootScope, $location) {
+
+                    /// get user from local
+                    var userFromLocal = angular.fromJson(localStorage.getItem("user"));
+
+                    /// check the rootscope
+                    if (userFromLocal !== undefined && userFromLocal.IsLoggedIn) {
+                        $rootScope.User = userFromLocal;
+                        return;
+                    }
+
+                    /// check the rootscope
+                    if (!$rootScope.User.IsLoggedIn || $rootScope.User === undefined) {
+                        $location.path("/login");
+                    }
+                }
+            },
+            templateUrl: "angular/templates/dashboard.html",
+            controller: "dashboardCtrl"
         })
-        .when("/22", {
-            template: "<h1>TEST 22</h1><p>Tomatoes contain around 95% water.</p>"
+        .when("/login", {
+            templateUrl: "angular/templates/login.html",
+            controller: "loginCtrl"
         })
-        .when("/1", {
-            templateUrl: "angular/templates/1.html"
-            //controller: ""
+        .when("/profile/:id", {
+            resolve: {
+                check: function ($rootScope, $location) {
+
+                    /// get user from local
+                    var userFromLocal = angular.fromJson(localStorage.getItem("user"));
+
+                    /// check the rootscope
+                    if (userFromLocal !== undefined && userFromLocal.IsLoggedIn) {
+                        $rootScope.User = userFromLocal;
+                        return;
+                    }
+
+                    /// check the rootscope
+                    if (!$rootScope.User.IsLoggedIn || $rootScope.User === undefined) {
+                        $location.path("/login");
+                    }
+                }
+            },
+            templateUrl: "angular/templates/profile.html",
+            controller: "profileCtrl"
         })
-        .when("/2", {
-            templateUrl: "angular/templates/2.html"
-            //controller: ""
+        .when("/contactus", {
+            resolve: {
+                check: function ($rootScope, $location) {
+
+                    /// get user from local
+                    var userFromLocal = angular.fromJson(localStorage.getItem("user"));
+
+                    /// check the rootscope
+                    if (userFromLocal !== undefined && userFromLocal.IsLoggedIn) {
+                        $rootScope.User = userFromLocal;
+                        return;
+                    }
+
+                    /// check the rootscope
+                    if (!$rootScope.User.IsLoggedIn || $rootScope.User === undefined) {
+                        $location.path("/login");
+                    }
+                }
+            },
+            templateUrl: "angular/templates/contactUs.html"
+        })
+        .when("/notfound", {
+            templateUrl: "angular/templates/notfound.html"
+        })
+        .when("/accessdenied", {
+            templateUrl: "angular/templates/accessdenied.html"
         })
         .otherwise({
-            templateUrl: "angular/templates/1.html"
-            //controller: ""
+            redirectTo: "/dashboard"
         });
 
     // use the HTML5 History API

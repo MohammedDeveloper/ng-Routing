@@ -1,0 +1,8 @@
+<h3>
+    Welcome {{ userName }}
+</h3>
+<div class="wrapper">
+    <div ng-repeat="user in users track by $index">
+        <strong><a href="/profile/{{ user.id }}" >Edit</a></strong> | <strong>{{ user.name }}</strong> | <small>{{ user.age }}</small>
+    </div>
+</div>
